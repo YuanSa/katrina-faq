@@ -1,0 +1,42 @@
+.header {
+  display: flex;
+  align-items: center;
+  padding: 4px 24px;
+  gap: 16px;
+  color: #ccc;
+  background-color: #3c3c3c;
+}
+
+.logo {
+  color: #fff;
+  filter: drop-shadow(0 0 2px #000);
+  cursor: default;
+  font-weight: 900;
+  font-size: 1.5em;
+  transition: filter 0.2s;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  flex: auto;
+
+  > .menu-item {
+    cursor: pointer;
+    font-size: 15px;
+    padding: 4px 8px;
+    border-radius: 4px;
+
+    &:hover {
+      background-color: #454646;
+    }
+  }
+}
+
+.extra {
+  font-size: 14px;
+  font-family: monospace;
+}

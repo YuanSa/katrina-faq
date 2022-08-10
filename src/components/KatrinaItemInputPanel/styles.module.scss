@@ -1,0 +1,42 @@
+.header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.contents {
+  margin-left: 23px;
+  background-color: transparent;
+  width: calc(100% - 23px);
+  border: none;
+
+  &:hover {
+    background-color: transparent;
+  }
+}
+
+.panel {
+  border: none;
+
+  :global(.semi-collapse-header) {
+    padding: 0;
+    margin-bottom: 0;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+  :global(.semi-collapse-content) {
+    padding-top: 0;
+  }
+
+  :global(.semi-collapse-header-icon) {
+    transform: translateY(15px);
+    margin-right: 0;
+  }
+}
+
+.input {
+  padding-bottom: 0;
+}

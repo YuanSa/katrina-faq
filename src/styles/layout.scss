@@ -1,0 +1,32 @@
+body {
+  margin: 0;
+  display: grid;
+  grid-template:
+    "header header" auto
+    "main main" minmax(0, 1fr)
+    "footer footer" auto /
+    minmax(0, 1fr) auto;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+#root {
+  display: contents;
+}
+
+header {
+  grid-area: header;
+}
+
+main {
+  grid-area: main;
+  background-color: #1e1e1e;
+}
+
+footer {
+  grid-area: footer;
+}
+
+aside {
+  grid-area: aside;
+}

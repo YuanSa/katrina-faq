@@ -1,15 +1,17 @@
 import { CSSProperties, FC } from "react";
-import { Input, withField } from "@douyinfe/semi-ui";
-import { VscKey } from "react-icons/vsc";
+import { Button, Input, Tooltip, withField } from "@douyinfe/semi-ui";
+import { BsPlusCircleDotted } from "react-icons/bs";
 import styles from "./styles.module.scss";
 import classNames from "classnames";
 import { KatrinaItem } from "../../types/Contents";
+import { VscChromeClose, VscClose } from "react-icons/vsc";
 
 interface KatrinaInputProps {
   value?: KatrinaItem;
   onChange?: (newValue: KatrinaItem) => unknown;
   active?: boolean;
   onActive?: () => unknown;
+  onDelete?: () => unknown;
   className?: string;
   style?: CSSProperties;
 }
@@ -18,6 +20,7 @@ export const KatrinaInput: FC<KatrinaInputProps> = ({
   onChange,
   active = false,
   onActive,
+  onDelete,
   className,
   style,
 }) => {
@@ -27,8 +30,22 @@ export const KatrinaInput: FC<KatrinaInputProps> = ({
       className={classNames(styles.input, active && styles.active, className)}
       style={style}
     >
+      <div className={styles.tags}>
+        {tags.length > 0 ? (
+          tags.map((tag, index) => (
+            <Tooltip content={tag} key={index} position="topLeft">
+              <span className={styles.tag}>{tag}</span>
+            </Tooltip>
+          ))
+        ) : (
+          <Tooltip content="添加标签" position="topLeft">
+            <span className={styles.tag}>
+              <BsPlusCircleDotted />
+            </span>
+          </Tooltip>
+        )}
+      </div>
       <Input
-        prefix={<VscKey className={styles["id-input-prefix"]} />}
         className={styles["id-input"]}
         value={id}
         onChange={(newId) => onChange?.({ id: newId, tags, name })}
@@ -40,7 +57,16 @@ export const KatrinaInput: FC<KatrinaInputProps> = ({
         onChange={(newName) => onChange?.({ id, tags, name: newName })}
         placeholder="请输入标题"
       />
-      {tags.length > 0 && <div className={styles.tags}>{tags}</div>}
+      {onDelete && (
+        <Button
+          size="small"
+          className={styles.delete}
+          icon={<VscChromeClose />}
+          theme="borderless"
+          type="tertiary"
+          onClick={onDelete}
+        />
+      )}
     </div>
   );
 };

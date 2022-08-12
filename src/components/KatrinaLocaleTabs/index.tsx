@@ -2,15 +2,20 @@ import { FC } from "react";
 import { IoLanguage } from "react-icons/io5";
 import styles from "./styles.module.scss";
 import classNames from "classnames";
-import { withField } from "@douyinfe/semi-ui";
 
-interface TabsProps {
+interface KatrinaLocaleTabsProps {
   list?: string[];
   active?: string;
   onActive?: (newKey: string) => unknown;
+  className?: string;
 }
-export const Tabs: FC<TabsProps> = ({ list = [], active, onActive }) => (
-  <ul className={styles.list}>
+export const KatrinaLocaleTabs: FC<KatrinaLocaleTabsProps> = ({
+  list = [],
+  active,
+  onActive,
+  className,
+}) => (
+  <ul className={classNames(styles.list, className)}>
     {list.map((item) => (
       <li
         key={item}
@@ -23,5 +28,3 @@ export const Tabs: FC<TabsProps> = ({ list = [], active, onActive }) => (
     ))}
   </ul>
 );
-
-export const TabsField = withField(Tabs, { valueKey: "list" });

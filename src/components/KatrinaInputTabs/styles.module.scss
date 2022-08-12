@@ -10,6 +10,8 @@
 }
 
 .input {
+  flex-shrink: 0;
+
   &:hover {
     background-color: #2a2d2e;
   }

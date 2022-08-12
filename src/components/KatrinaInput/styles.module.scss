@@ -1,9 +1,16 @@
 .input {
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  padding: 8px;
+  display: grid;
+  grid-template:
+    "tags id   delete" auto
+    "text text delete" auto /
+    auto minmax(0, 1fr) auto;
+  padding: 8px 16px;
   width: 100%;
+
+  :global(.semi-input-prefix) {
+    flex-shrink: 0;
+  }
 
   :global(.semi-input-wrapper) {
     &,
@@ -12,15 +19,35 @@
       line-height: 1em;
     }
   }
+
+  &.active {
+    .text-input {
+      input {
+        color: #fff;
+      }
+    }
+  }
 }
 
-.tag {
-  margin: 16px;
-  padding: 0;
-  width: 100px;
+.tags {
+  cursor: pointer;
+  grid-area: tags;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  min-width: 1.37em;
+  color: #fff;
+  border: none;
+  background-color: transparent;
+
+  > .tag {
+    display: flex;
+  }
 }
 
 .id-input {
+  grid-area: id;
   color: #8c8c8c;
   background-color: transparent;
   border: none;
@@ -43,11 +70,8 @@
   }
 }
 
-.id-input-prefix {
-  margin-right: 4px;
-}
-
 .text-input {
+  grid-area: text;
   border: none;
   background-color: transparent;
   color: #ccc;
@@ -59,7 +83,7 @@
 
   input {
     font-size: 1.4em;
-    padding: 0 18px;
+    padding: 0;
     font-weight: 600;
     text-overflow: ellipsis;
     &:focus {
@@ -68,23 +92,7 @@
   }
 }
 
-.tags {
-  cursor: pointer;
-  padding: 0 18px;
-  font-size: 12px;
-  color: #fff;
-  border: none;
-  background-color: transparent;
-}
-
-.tags-input-suffix {
-  cursor: pointer;
-}
-
-.input.active {
-  .text-input {
-    input {
-      color: #fff;
-    }
-  }
+.delete {
+  grid-area: delete;
+  place-self: center;
 }

@@ -15,11 +15,13 @@ interface KatrinaItemInputPanelProps {
   itemKey: string;
   value?: KatrinaItem;
   onChange?: (newValue: KatrinaItem) => unknown;
+  onDelete?: () => unknown;
 }
 export const KatrinaItemInputPanel: FC<KatrinaItemInputPanelProps> = ({
   value = {},
   itemKey,
   onChange,
+  onDelete,
 }) => {
   const handlePartialChange = (newValue: Partial<KatrinaItem>) =>
     onChange?.(Object.assign({}, value, newValue));
@@ -27,28 +29,12 @@ export const KatrinaItemInputPanel: FC<KatrinaItemInputPanelProps> = ({
   return (
     <Collapse.Panel
       header={
-        <div className={styles.header}>
-          <KatrinaInput
-            className={styles.input}
-            value={value}
-            onChange={(newValue) => handlePartialChange(newValue)}
-          />
-          <Dropdown
-            position="bottomRight"
-            trigger="click"
-            render={
-              <Dropdown.Menu>
-                <Dropdown.Item icon={<VscTag />}>编辑标签</Dropdown.Item>
-                <Dropdown.Divider />
-                <Dropdown.Item icon={<VscTrash />} type="danger">
-                  删除
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            }
-          >
-            <Button icon={<VscMenu />} theme="borderless" type="tertiary" />
-          </Dropdown>
-        </div>
+        <KatrinaInput
+          className={styles.input}
+          value={value}
+          onChange={(newValue) => handlePartialChange(newValue)}
+          onDelete={onDelete}
+        />
       }
       className={styles.panel}
       itemKey={itemKey}

@@ -16,6 +16,7 @@ import {
   VscFeedback,
   VscOrganization,
   VscSettingsGear,
+  VscGlobe,
 } from "react-icons/vsc";
 import styles from "./styles.module.scss";
 
@@ -31,7 +32,7 @@ export const Header: FC = () => {
             <Dropdown.Menu>
               <Dropdown.Item icon={<VscNewFile />}>新建文件</Dropdown.Item>
               <Dropdown.Item icon={<VscFolderOpened />}>打开文件</Dropdown.Item>
-              <Dropdown.Item icon={<VscCloudDownload />}>
+              <Dropdown.Item icon={<VscGlobe />}>
                 从互联网打开文件
               </Dropdown.Item>
               <Dropdown.Divider />

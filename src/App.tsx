@@ -1,13 +1,27 @@
-import { Route, Routes } from "react-router-dom";
+import { useState } from "react";
+import { Footer } from "./components/Footer";
+import { Header } from "./components/Header";
 import { Editor } from "./page/Editor";
-import { Welcome } from "./page/Welcome";
+import { KatrinaFAQ } from "./types";
+import { initValue } from "./config";
 
 function App() {
+  const [faq, setFAQ] = useState<Partial<KatrinaFAQ>>(initValue);
+  const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
   return (
-    <Routes>
-      <Route path="/" element={<Welcome />}></Route>
-      <Route path="/edit" element={<Editor />}></Route>
-    </Routes>
+    <>
+      <Header />
+      <Editor
+        initValue={faq}
+        onSubmit={setFAQ}
+        onChange={() => setHasUnsavedChanges(true)}
+      />
+      <Footer
+        hasUnsavedChanges={hasUnsavedChanges}
+        baseContentsVersion={faq?.info?.editorVersion}
+        currentEditorVersion={faq?.info?.contentVersion}
+      />
+    </>
   );
 }
 

@@ -19,4 +19,5 @@ export type KatrinaEditorConfig = {
   permissions: KatrinaPermissions;
   tagEnum: KatrinaTag[];
   clearUnusedLocale: boolean;
+  pageTitle?: string;
 };

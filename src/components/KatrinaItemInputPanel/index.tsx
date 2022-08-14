@@ -34,6 +34,7 @@ export const KatrinaItemInputPanel: FC<KatrinaItemInputPanelProps> = ({
           value={value}
           onChange={(newValue) => handlePartialChange(newValue)}
           onDelete={onDelete}
+          stopPropagation
         />
       }
       className={styles.panel}

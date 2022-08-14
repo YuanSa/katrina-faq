@@ -1,6 +1,5 @@
 .form {
   :global(.semi-form-field) {
-    height: 100%;
     padding: 0;
   }
 
@@ -27,13 +26,34 @@
 
 .aside {
   grid-area: aside;
+  display: flex;
+  flex-direction: column;
   width: 350px;
   height: 100%;
   box-shadow: 2px 0 4px #0001;
+  background-color: rgb(37, 37, 38);
   z-index: 1;
+  overflow: auto;
+
+  > :global(.semi-form-field) {
+    flex-shrink: 0;
+  }
 }
 
 .contents {
   grid-area: contents;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: auto;
   z-index: 0;
+}
+
+.add-group-button,
+.add-item-button {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  backdrop-filter: blur(10px) brightness(.5);
 }

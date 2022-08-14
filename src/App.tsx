@@ -4,6 +4,7 @@ import { Header } from "./components/Header";
 import { Editor } from "./page/Editor";
 import { KatrinaFAQ } from "./types";
 import { initValue } from "./config";
+import { Modal } from "@douyinfe/semi-ui";
 
 function App() {
   const [faq, setFAQ] = useState<Partial<KatrinaFAQ>>(initValue);
@@ -18,9 +19,12 @@ function App() {
       />
       <Footer
         hasUnsavedChanges={hasUnsavedChanges}
-        baseContentsVersion={faq?.info?.editorVersion}
-        currentEditorVersion={faq?.info?.contentVersion}
+        baseContentsVersion={faq?.info?.contentVersion}
+        currentEditorVersion={faq?.info?.editorVersion}
       />
+      <Modal>
+
+      </Modal>
     </>
   );
 }

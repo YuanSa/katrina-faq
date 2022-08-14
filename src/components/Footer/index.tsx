@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { FC } from "react";
 import styles from "./styles.module.scss";
 
@@ -12,7 +13,9 @@ export const Footer: FC<FooterProps> = ({
   hasUnsavedChanges = false,
 }) => {
   return (
-    <footer className={styles.footer}>
+    <footer
+      className={classNames(styles.footer, !hasUnsavedChanges && styles.saved)}
+    >
       <div className={styles.status}>
         {hasUnsavedChanges ? "本地变更尚未同步" : "本地内容已同步"}
       </div>
